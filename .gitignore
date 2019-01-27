@@ -1,0 +1,6 @@
+.idea/
+output.txt
+.DS_Store
+receive/token.json
+send/token.json
+*.pyc

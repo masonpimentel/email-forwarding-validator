@@ -1,0 +1,26 @@
+{
+  "scopes": {
+    "receive": "https://www.googleapis.com/auth/gmail.modify",
+    "send": "https://www.googleapis.com/auth/gmail.send"
+  },
+  "email_cycle_delay": 2,
+  "num_cycle": 8,
+  "backup_size": 192,
+  "verbosity": {
+    "verbose": true,
+    "debug": true
+  },
+  "sender_gmail": "fill this in",
+  "receiver": {
+    "test": "fill this in",
+    "info": "fill this in"
+  },
+  "subject": {
+    "test": "Test email",
+    "info": "Email Validator"
+  },
+  "message_body": {
+    "test": "Test message",
+    "info": "Run got {0} emails, {1} expected"
+  }
+}

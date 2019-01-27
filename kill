@@ -1,0 +1,19 @@
+#!/bin/bash
+
+IFS=","
+
+o1=$(pgrep -f send.py -d ,)
+o2=$(pgrep -f receive.py -d ,)
+
+read -r -a arr1 <<< "$o1"
+read -r -a arr2 <<< "$o2"
+
+for e1 in "${arr1[@]}"
+do
+    kill "$e1"
+done
+
+for e2 in "${arr2[@]}"
+do
+    kill "$e2"
+done
