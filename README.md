@@ -231,8 +231,10 @@ You can make a manual run by running:
 
 ```
 $ cd <path>/email-validator
-$ ./cronjob
+$ ./cronjob &
 ```
+
+The `&` at the end will allow you to run the app in the background.
 
 #### Viewing Logs
 
@@ -242,6 +244,10 @@ To see the logs, open `<path>/email-validator/output.txt` This can be done by ru
 $ cat <path>/email-validator/output.txt
 ```
 
+![](documentation/screenshots/screen18.png)
+
+Here you can see that the cronjob detected that the app was not running, so it started it up. This is indicated by the `CRONJOB:` tag. You can also see that `receive` has started, and `send` has sent it's first message.
+
 #### Clearing Logs
 
 To clear the logs, run:
@@ -250,6 +256,19 @@ To clear the logs, run:
 $ cd <path>/email-validator
 $ ./clear
 ```
+
+#### Kill the App
+
+To kill the app, run:
+
+```
+$ cd <path>/email-validator
+$ ./kill
+```
+
+If your cron job has been set up (instructions below) then at the next scheduled run it will restart. 
+
+### What the App Validates
 
 ### Scheduling Runs Using Cron
 
