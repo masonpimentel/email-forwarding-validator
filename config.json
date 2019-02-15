@@ -3,12 +3,12 @@
     "receive": "https://www.googleapis.com/auth/gmail.modify",
     "send": "https://www.googleapis.com/auth/gmail.send"
   },
-  "email_cycle_delay": 2,
+  "email_cycle_delay": 900,
   "num_cycle": 8,
   "backup_size": 192,
   "verbosity": {
-    "verbose": true,
-    "debug": true
+    "verbose": false,
+    "debug": false
   },
   "sender_gmail": "fill this in",
   "receiver": {
