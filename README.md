@@ -4,7 +4,27 @@ This application will allow you to validate the reliability of your email forwar
 
 ![](documentation/email-validator.png)
 
+_High level design: how the Python application interacts with Google Cloud and your email forwarding service_
+
+It works by starting two processes: `send` and `receive` that run concurrently:
+
+![](documentation/processes.png)
+
+_`send` and `receive` processes: values in bold are configurable_
+
+The `send` process sends **num_cycle** emails at an interval of **email_cycle_delay** seconds. The `receive` process checks after **email_cycle_delay** x **num_cycle** seconds that **num_cycle** emails have been received. There is half a cycle delay added at the beginning of `receive` and at the end of `send` as offset to avoid timing issues with emails in transit.
+
+### In This Guide  
+
 This README is more of a guide and includes instructions on everything from setting up your Google Cloud services, to setting up the Python application and setting up the cron jobs on your server for automation.
+
+It consists of the following parts:
+
+- Using the Google cloud platform to set up 2 services:
+  - One that handles the sending of emails at a given interval from the `receive account`
+  - Another one that handles checking that all the sent emails are received at `send account`
+- Setting up the Python application that implements the logic required to utilize the above services
+- Setting up the cronjobs that can be run on a Unix-based server to execute the Python application at a given interval
 
 Note that this guide assumes you are using a Unix cron scheduler but theoretically you could run this from any machine as long as it has a scheduler and can run Python. In this case we would normally call this machine the 'server' but actually the way it's applied here it's more of a client as it will be interacting with Google Cloud.
 
@@ -18,14 +38,6 @@ In total there can be 4 email accounts involved:
 - The Gmail `send account`
 - The email account with your custom domain that has a forwarding service enabled
 - The email account which will receive reports/notifications (optional)
-
-This guide consists of the following:
-
-- Using the Google cloud platform to set up 2 services:
-  - One that handles the sending of emails at a given interval from the `receive account`
-  - Another one that handles checking that all the sent emails are received at `send account`
-- Setting up the Python application that implements the logic required to utilize the above services
-- Setting up the cronjobs that can be run on a Unix-based server to execute the Python application at a given interval
 
 ### Create Google Cloud Projects
 
