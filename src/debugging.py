@@ -23,10 +23,12 @@ def print_message(message, type_prefix, message_type):
         print(str(time.strftime("%c")) + format_type(12, "MESSAGE") + format_prefix(12, type_prefix) + message)
     elif message_type == "error":
         print(str(time.strftime("%c")) + format_type(12, "ERROR") + format_prefix(12, type_prefix) + message)
-    elif message_type == "debug" and DEBUG:
-        print(str(time.strftime("%c")) + format_type(12, "DEBUG") + format_prefix(12, type_prefix) + message)
-    elif message_type == "verbose" and VERBOSE:
-        print(str(time.strftime("%c")) + format_type(12, "VERBOSE") + format_prefix(12, type_prefix) + message)
+    elif message_type == "debug":
+        if DEBUG:
+            print(str(time.strftime("%c")) + format_type(12, "DEBUG") + format_prefix(12, type_prefix) + message)
+    elif message_type == "verbose":
+        if VERBOSE:
+            print(str(time.strftime("%c")) + format_type(12, "VERBOSE") + format_prefix(12, type_prefix) + message)
     else:
         print(str(time.strftime("%c")) + format_type(12, "ERROR") + format_prefix(12, type_prefix) + "Unknown type argument supplied to print_message")
 
