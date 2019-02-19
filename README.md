@@ -77,6 +77,10 @@ Once created, you can click on the notification, or the page should eventually t
 
 In the left panel of the dashboard you should be able to click on APIs & Services > Library
 
+![](documentation/screenshots/screen19.png) |
+------------ | 
+_Finding the API library_ |
+
 From here, just search for Gmail API. It should be the first result.
 
 ![](documentation/screenshots/screen5.png) |
@@ -121,6 +125,8 @@ From the list, add the `../auth/gmail.modify` scope.
 
 Note the sensitive scopes warning. For our use, we are the project creator so we don't have to worry about the use of our own data. We should be able to safely ignore any scope warnings.
 
+Don't forget to click "Save" at the bottom!
+
 #### Create project for send account
 
 These steps are the same as for creating the project for the receive account, except for the following:
@@ -150,6 +156,12 @@ Alternatively, if you want to use SSH:
 ```
 $ git clone git@github.com:snxfz947/EmailForwardingValidator.git
 ```
+
+The rest of the steps will assume the repository is in a directory named `email-validator` so it is suggested to rename the repository:
+
+```
+$ mv EmailForwardingValidator email-validator
+``` 
 
 #### Install relevant tools
 
