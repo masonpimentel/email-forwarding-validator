@@ -2,15 +2,15 @@
 
 This application will allow you to validate the reliability of your email forwarding service to a Google Gmail account by automating the sending, receiving and validation of emails from a Python application. The Google Cloud Gmail API is used to send emails and read them on the Gmail accounts.
 
-![](documentation/email-validator.png)
-
-_High level design: how the Python application interacts with Google Cloud and your email forwarding service_
+![](documentation/email-validator.png) |
+------------ | 
+_High level design_ | 
 
 It works by starting two processes: `send` and `receive` that run concurrently:
 
-![](documentation/processes.png)
-
-_`send` and `receive` processes: values in bold are configurable_
+![](documentation/processes.png) |
+------------ | 
+_`send` and `receive` processes: values in bold are configurable_ |
 
 The `send` process sends **num_cycle** emails at an interval of **email_cycle_delay** seconds. The `receive` process checks after **email_cycle_delay** x **num_cycle** seconds that **num_cycle** emails have been received. There is half a cycle delay added at the beginning of `receive` and at the end of `send` as offset to avoid timing issues with emails in transit.
 
@@ -41,7 +41,7 @@ In total there can be 4 email accounts involved:
 
 ### Create Google Cloud Projects
 
-This section is quite long because it allows you to create your own Google Cloud projects. The benefit of this is it will allow you to have full control of the service and your data.
+This section shows you how to create your own Google Cloud project. The benefit of doing so is it will allow you to have full control of the service and your data.
 
 To create the two Google Cloud projects, you will just need one Google account. This can be done using one of the two above mentioned Gmail accounts, or even a different Google account.
 
@@ -53,7 +53,9 @@ https://console.cloud.google.com
 
 In the Google Cloud console, click on the "Select a project" dropdown:
 
-![](documentation/screenshots/screen1.png)
+![](documentation/screenshots/screen1.png) |
+------------ | 
+_Dropdown to create a new project_ |
 
 Then click on "NEW PROJECT"
 
@@ -61,11 +63,15 @@ Name the new project something along the lines of `Validator-Receive` - just men
 
 Don't worry about specifying an organization.
 
-![](documentation/screenshots/screen2.png)
+![](documentation/screenshots/screen2.png) |
+------------ | 
+_Creating the project_ |
 
 Note that it will take a bit of time for your project to be created.
 
-![](documentation/screenshots/screen3.png)
+![](documentation/screenshots/screen3.png) |
+------------ | 
+_Waiting for the project to be created_ |
 
 Once created, you can click on the notification, or the page should eventually take you to the project's dashboard.
 
@@ -73,15 +79,21 @@ In the left panel of the dashboard you should be able to click on APIs & Service
 
 From here, just search for Gmail API. It should be the first result.
 
-![](documentation/screenshots/screen5.png)
+![](documentation/screenshots/screen5.png) |
+------------ | 
+_Searching the API library_ |
 
-![](documentation/screenshots/screen6.png)
+![](documentation/screenshots/screen6.png) |
+------------ | 
+_Adding the Gmail API_ |
 
 Click on Enable -> Credentials -> + Create Credential
 
 From here, you'll eventually need to create an OAuth client ID, but the UI allows you to enter information to determine that this is the kind of key you'll need. You can fill in the following information:
 
-![](documentation/screenshots/screen7.png)
+![](documentation/screenshots/screen7.png) |
+------------ | 
+_Credentials wizard/questionnaire_ |
 
 Note that although we are specifying "Other UI" the Python application itself does not have a user interface, but it will give us a link that we'll use to authenticate our services which we can run on any browser.
 
@@ -89,19 +101,23 @@ Now create a client ID - again it helps to use a name along the lines of `Receiv
 
 In the consent screen, it'll help to mention the receive account for when you're authenticating
 
-![](documentation/screenshots/screen8.png)
+![](documentation/screenshots/screen8.png) |
+------------ | 
+_Setting up the receive account consent screen_ |
 
 Once complete, download the credentials. It will be saved in JSON format. Click Done.
 
-The next thing we need to do is add the appropriate scope, which specifies what the Google service can do. Since this is the receive account, we'll want to be able to read the account's emails. This can be done with the `auth/gmail.modify scope` 
+The next thing we need to do is add the appropriate scope, which specifies what the Google service can do. Since this is the receive account, we'll want to be able to read the account's emails. This can be done with the `auth/gmail.modify` scope.
 
 Click on the "OAuth consent screen" tab
 
-![](documentation/screenshots/screen9.png)
+![](documentation/screenshots/screen9.png) |
+------------ | 
+_Adding a project scope_ |
 
 Scroll down to "Scopes for Google APIs" and click on "Add scope"
 
-From the list, add the `../auth/gmail.modify scope`
+From the list, add the `../auth/gmail.modify` scope.
 
 Note the sensitive scopes warning. For our use, we are the project creator so we don't have to worry about the use of our own data. We should be able to safely ignore any scope warnings.
 
@@ -115,7 +131,9 @@ These steps are the same as for creating the project for the receive account, ex
 
 Most importantly, the scope you want to add is `../auth/gmail.send`
 
-![](documentation/screenshots/screen11.png)
+![](documentation/screenshots/screen11.png) |
+------------ | 
+_Adding the Gmail `send` scope_|
 
 ### Set up Python Application
 
@@ -190,7 +208,9 @@ $ ./config
 
 Follow the first link shown by entering it in any browser - the consent screen should tell you what account to sign in with. This should be the `send account`
 
-![](documentation/screenshots/screen12.png)
+![](documentation/screenshots/screen12.png) |
+------------ | 
+_Authenticating the app in a browser_ |
 
 Copy the code and enter it in your command line window. This will set up your send account API token.
 
@@ -200,13 +220,17 @@ Repeat the steps with the second link to set up your `receive account` API token
 
 When you open `<path>/email-validator/config.json` you will see the following:
 
-![](documentation/screenshots/screen16.png)
+![](documentation/screenshots/screen16.png) |
+------------ | 
+_The full `config.json` file_|
 
 ##### Required fields
 
 The following values have to be filled in:
 
-![](documentation/screenshots/screen13.png)
+![](documentation/screenshots/screen13.png) |
+------------ | 
+_Mandatory fields to be filled in_ |
 
 * `sender_gmail` - this is the `send account` - the Gmail account that will send the test emails
 * `receiver.test` - IMPORTANT: this is _not_ the `receive account` - this is the email address you are testing, i.e. the account that has forwarding set up, and routes emails eventually to the `receive account`
@@ -216,7 +240,9 @@ The following values have to be filled in:
 
 These values can be tweaked:
 
-![](documentation/screenshots/screen14.png)
+![](documentation/screenshots/screen14.png) |
+------------ | 
+_Configurable settings_ |
 
 * `email_cycle_delay` - the delay in seconds between emails that are sent from the `send account` 
 * `num_cycle` - the number of emails that are sent by the `send account` and looked for in the `receive account`
@@ -226,7 +252,9 @@ These values can be tweaked:
 
 These values change how much information is shown in the logs:
 
-![](documentation/screenshots/screen15.png)
+![](documentation/screenshots/screen15.png) |
+------------ | 
+_Verbosity settings_ |
 
 * `verbosity.verbose` - setting this to `true` will show more information while the application is running
 * `verbosity.debug` - this is used more for development purposes
@@ -256,7 +284,9 @@ To see the logs, open `<path>/email-validator/output.txt` This can be done by ru
 $ cat <path>/email-validator/output.txt
 ```
 
-![](documentation/screenshots/screen18.png)
+![](documentation/screenshots/screen18.png) |
+------------ | 
+_Viewing the logs_ |
 
 Here you can see that the cronjob detected that the app was not running, so it started it up. This is indicated by the `CRONJOB:` tag. You can also see that `receive` has started, and `send` has sent it's first message.
 
@@ -280,8 +310,6 @@ $ ./kill
 
 If your cron job has been set up (instructions below) then at the next scheduled run it will restart. 
 
-### What the App Validates
-
 ### Scheduling Runs Using Cron
 
 To open the [crontab](http://man7.org/linux/man-pages/man5/crontab.5.html) run:
@@ -298,6 +326,8 @@ This should open the file in your preferred editor. On a fresh Ubuntu instance i
 
 If you're not sure what's happening at this point, you're in the [vim](https://coderwall.com/p/adv71w/basic-vim-commands-for-getting-started) editor. Just press "j" until your cursor reaches the bottom, "o" to start editing, then copy+paste the above if your shell terminal allows it, otherwise enter it in manually. Then press ESC to exit editor mode, ":" (colon), "wq" then ENTER to save and exit. 
 
-![](documentation/screenshots/screen17.png)
+![](documentation/screenshots/screen17.png) |
+------------ | 
+_Editing the crontab_ |
 
 This will run the script every 10 minutes. The cronjob checks that the Python script for sending and script for receiving are running - if either are not they will both be restarted. See [cronjob](cronjob).
