@@ -148,19 +148,19 @@ _Adding the Gmail `send` scope_|
 Make sure you're in the directory where you want to run the Python application and Cronjob from. The rest of these steps will denote the current directory by `<path>`
 
 ```
-$ git clone https://github.com/snxfz947/EmailForwardingValidator.git
+$ git clone https://github.com/snxfz947/email-forwarding-validator.git
 ```
 
 Alternatively, if you want to use SSH:
 
 ```
-$ git clone git@github.com:snxfz947/EmailForwardingValidator.git
+$ git clone git@github.com:snxfz947/email-forwarding-validator.git
 ```
 
 The rest of the steps will assume the repository is in a directory named `email-validator` so it is suggested to rename the repository:
 
 ```
-$ mv EmailForwardingValidator email-validator
+$ mv email-forwarding-validator email-validator
 ``` 
 
 #### Install relevant tools
