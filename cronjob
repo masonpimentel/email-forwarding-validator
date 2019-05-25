@@ -3,8 +3,12 @@
 r1=$(pgrep -f send.py)
 r2=$(pgrep -f receive.py)
 
+# repo_path variable added here by config script
+{repo_path_cmd}
+
 dir=$(pwd)
 
+invoker=$(src/invoker)
 
 cd $dir/src
 if [ -z $r1 ] || [ -z $r2 ]; then
