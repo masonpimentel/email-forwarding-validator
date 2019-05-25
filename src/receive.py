@@ -1,5 +1,5 @@
-from messages import *
-from debugging import *
+from lib.messages import *
+from lib.debugging import *
 import time
 import json
 

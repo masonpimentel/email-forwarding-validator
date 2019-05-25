@@ -3,7 +3,7 @@ from googleapiclient.discovery import build
 from httplib2 import Http
 from oauth2client import file, client, tools
 from email.message import EmailMessage
-from debugging import *
+from lib.debugging import *
 import base64
 import argparse
 import json

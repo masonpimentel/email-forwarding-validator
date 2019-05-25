@@ -1,4 +1,4 @@
-from messages import *
+from lib.messages import *
 import argparse
 
 parser = argparse.ArgumentParser()
