@@ -1,22 +1,22 @@
 {
     "message_body": {
-        "test": "Test message",
-        "info": "Run got {0} emails, {1} expected"
+        "info": "Run got {0} emails, {1} expected",
+        "test": "Test message"
     },
     "paths": {
         "repo_path": "/home/snxfz-app/email-forwarding-validator"
     },
-    "python_invoker": "python3"
+    "python_invoker": "python3",
     "scopes": {
         "receive": "https://www.googleapis.com/auth/gmail.modify",
         "send": "https://www.googleapis.com/auth/gmail.send"
     },
     "subject": {
-        "test": "Test email",
-        "info": "Email Validator"
+        "info": "Email Validator",
+        "test": "Test email"
     },
     "verbosity": {
-        "verbose": false,
-        "debug": false
+        "debug": false,
+        "verbose": false
     }
 }

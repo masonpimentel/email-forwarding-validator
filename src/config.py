@@ -1,14 +1,16 @@
 from googleapiclient.discovery import build
 from httplib2 import Http
 from oauth2client import file, client, tools
+
+from lib.debugging import *
+from lib.utils import *
+
 import argparse
 import json
 
 
-with open("../config.json") as config_file:
-    json_config = json.load(config_file)
-    RECEIVE_SCOPES = json_config["scopes"]["receive"]
-    SEND_SCOPES = json_config["scopes"]["send"]
+RECEIVE_SCOPES = config_get_scopes()["receive"]
+SEND_SCOPES = config_get_scopes()["send"]
 
 
 def setup_parser(parser):

@@ -1,11 +1,9 @@
-import json
+from lib.utils import *
 import time
 
 
-with open("../config.json") as config_file:
-    json_config = json.load(config_file)
-    DEBUG = json_config["verbosity"]["debug"]
-    VERBOSE = json_config["verbosity"]["verbose"]
+DEBUG = config_get_verbosities()["debug"]
+VERBOSE = config_get_verbosities()["verbose"]
 
 
 def format_type(padding, body):
@@ -19,7 +17,9 @@ def format_prefix(padding, body):
 
 
 def print_message(message, type_prefix, message_type):
-    if message_type == "message":
+    if message_type == "info":
+        print(str(time.strftime("%c")) + format_type(12, "INFO") + format_prefix(12, type_prefix) + message)
+    elif message_type == "message":
         print(str(time.strftime("%c")) + format_type(12, "MESSAGE") + format_prefix(12, type_prefix) + message)
     elif message_type == "error":
         print(str(time.strftime("%c")) + format_type(12, "ERROR") + format_prefix(12, type_prefix) + message)
