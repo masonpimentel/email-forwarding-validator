@@ -11,40 +11,52 @@ def config_get_user():
         return json.load(config_file)
 
 
-def config_get_dev_urls():
-    return config_get_dev()["urls"]
+def config_get_backup_size():
+    return config_get_user()["backup_size"]
 
 
-def config_get_dev_auth():
-    return config_get_dev()["auth"]
+def config_get_email_cycle_delay():
+    return config_get_user()["email_cycle_delay"]
 
 
-def config_get_user_auth():
-    return config_get_user()["auth"]
+def config_get_num_cycle():
+    return config_get_user()["num_cycle"]
 
 
-def config_get_dev_req_bodies():
-    return config_get_dev()["req_bodies"]
+def config_get_receiver_email():
+    return config_get_user()["receiver"]["test"]
 
 
-def config_get_dev_paths():
-    return config_get_dev()["paths"]
+def config_get_receiver_info_email():
+    return config_get_user()["receiver"]["info"]
 
 
-def config_get_user_paths():
-    return config_get_user()["paths"]
+def config_get_sender_gmail():
+    return config_get_user()["sender_gmail"]
 
 
-def config_get_user_limits():
-    return config_get_user()["limits"]
+def config_get_message_bodies():
+    return config_get_dev()["message_body"]
 
 
-def config_get_dev_limits():
-    return config_get_dev()["limits"]
+def config_get_repo_path():
+    return config_get_dev()["paths"]["repo_path"]
 
 
-def config_get_user_verbosity():
-    return config_get_user()["verbosity"]
+def config_get_python_invoker():
+    return config_get_dev()["python_invoker"]
+
+
+def config_get_scopes():
+    return config_get_dev()["scopes"]
+
+
+def config_get_subjects():
+    return config_get_dev()["subject"]
+
+
+def config_get_verbosities():
+    return config_get_dev()["verbosity"]
 
 
 def config_write_dev(new_config):
@@ -55,19 +67,6 @@ def config_write_dev(new_config):
 def config_write_user(new_config):
     with open("../user_config.json", "w") as config_file:
         json.dump(new_config, config_file, indent=4, sort_keys=True)
-
-
-def config_clear_dev_auth_code():
-    dev_config = config_get_dev()
-    dev_config["auth"]["auth_code"] = ""
-    config_write_dev(dev_config)
-
-
-def config_clear_refresh_token():
-    dev_config = config_get_dev()
-    dev_config["auth"]["refresh_token"] = ""
-    dev_config["req_bodies"]["refresh_body"] = ""
-    config_write_dev(dev_config)
 
 
 def config_clear_user_auth():
