@@ -6,11 +6,6 @@ from lib.debugging import *
 from lib.utils import *
 
 import argparse
-import json
-
-
-RECEIVE_SCOPES = config_get_scopes()["receive"]
-SEND_SCOPES = config_get_scopes()["send"]
 
 
 def setup_parser(parser):
@@ -63,14 +58,12 @@ def main():
     else:
         configure_cronjob()
 
-        res = create_token("../send/token.json", "../send/credentials-send.json", SEND_SCOPES)
+        res = create_token("../send/token.json", "../send/credentials-send.json", config_get_scopes()["send"])
         if not res:
             print("Token for send already exists!")
-        res = create_token("../receive/token.json", "../receive/credentials-receive.json", RECEIVE_SCOPES)
+        res = create_token("../receive/token.json", "../receive/credentials-receive.json", config_get_scopes()["receive"])
         if not res:
             print("Token for receive already exists!")
-
-
 
 
 if __name__ == '__main__':
