@@ -3,8 +3,8 @@
     "email_cycle_delay": 900,
     "num_cycle": 8,
     "receiver": {
-        "test": "fill_this_in",
-        "info": "fill_this_in"
+        "info": "fill_this_in",
+        "test": "fill_this_in"
     },
     "sender_gmail": "fill_this_in"
 }
