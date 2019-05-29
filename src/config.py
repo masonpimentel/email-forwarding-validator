@@ -26,9 +26,7 @@ def setup_invoker(invoker):
 
 
 def clear_configuration():
-    config_clear_user_auth()
-    config_clear_dev_auth_code()
-    config_clear_refresh_token()
+    config_clear_user_config()
     config_clear_cronjob_repo_path()
     print_message("Configuration has been cleared!", "CONFIG", "info")
 
@@ -48,7 +46,7 @@ def create_token(token_path, credentials_path, scopes):
 
 
 def configure_cronjob():
-    if config_replace_cronjob_line("{repo_path_cmd}", "repo_path=" + config_get_dev_paths()["repo_path"]):
+    if config_replace_cronjob_line("{repo_path_cmd}", "repo_path=" + config_get_repo_path()):
         print_message("Cronjob configured", "CONFIG", "info")
 
 

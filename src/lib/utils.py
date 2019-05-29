@@ -69,13 +69,6 @@ def config_write_user(new_config):
         json.dump(new_config, config_file, indent=4, sort_keys=True)
 
 
-def config_clear_user_auth():
-    user_config = config_get_user()
-    user_config["auth"]["client_id"] = ""
-    user_config["auth"]["client_secret"] = ""
-    config_write_user(user_config)
-
-
 def config_replace_cronjob_line(find_string, replace_string_with, contains=False):
     f = open("../cronjob", "r")
     lines = f.readlines()
@@ -91,6 +84,14 @@ def config_replace_cronjob_line(find_string, replace_string_with, contains=False
             return True
 
     return False
+
+
+def config_clear_user_config():
+    user_config = config_get_user()
+    user_config["receiver"]["test"] = "fill_this_in"
+    user_config["receiver"]["info"] = "fill_this_in"
+    user_config["sender_gmail"] = "fill_this_in"
+    config_write_user(user_config)
 
 
 def config_clear_cronjob_repo_path():
