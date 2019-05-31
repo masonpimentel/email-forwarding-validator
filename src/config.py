@@ -26,10 +26,9 @@ def clear_configuration():
     print_message("Configuration has been cleared!", "CONFIG", "info")
 
 
-def create_token(token_path, credentials_path, scopes):
+def create_token(token_path, credentials_path, scopes, parser):
     store = file.Storage(token_path)
     creds = store.get()
-    parser = argparse.ArgumentParser(parents=[tools.argparser])
     if not creds or creds.invalid:
         flow = client.flow_from_clientsecrets(credentials_path, scopes)
         flags = parser.parse_args()
@@ -46,7 +45,7 @@ def configure_cronjob():
 
 
 def main():
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(parents=[tools.argparser])
     setup_parser(parser)
 
     invoker = parser.parse_args().python_invoker
@@ -58,10 +57,10 @@ def main():
     else:
         configure_cronjob()
 
-        res = create_token("../send/token.json", "../send/credentials-send.json", config_get_scopes()["send"])
+        res = create_token("../send/token.json", "../send/credentials-send.json", config_get_scopes()["send"], parser)
         if not res:
             print("Token for send already exists!")
-        res = create_token("../receive/token.json", "../receive/credentials-receive.json", config_get_scopes()["receive"])
+        res = create_token("../receive/token.json", "../receive/credentials-receive.json", config_get_scopes()["receive"], parser)
         if not res:
             print("Token for receive already exists!")
 
