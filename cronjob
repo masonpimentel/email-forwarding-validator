@@ -13,17 +13,17 @@ invoker=$(src/invoker)
 cd $dir/src
 if [ -z $r1 ] || [ -z $r2 ]; then
     if [ -z $r1 ]; then
-        python3 -u timedate.py "1" >> ../output.txt
+        $invoker -u timedate.py "1" >> ../output.txt
     fi
 
     if [ -z $r2 ]; then
-        python3 -u timedate.py "2" >> ../output.txt
+        $invoker -u timedate.py "2" >> ../output.txt
     fi
 
-    python3 -u timedate.py "3" >> ../output.txt
+    $invoker -u timedate.py "3" >> ../output.txt
     ../kill
     ../send/start &
     ../receive/start &
 else
-    python3 -u timedate.py "4" >> ../output.txt
+    $invoker -u timedate.py "4" >> ../output.txt
 fi

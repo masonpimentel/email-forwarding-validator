@@ -1,3 +1,5 @@
 #!/bin/bash
 
-nohup python3 -u send.py >> ../output.txt
+invoker=$(../src/invoker)
+
+nohup $invoker -u send.py >> ../output.txt
