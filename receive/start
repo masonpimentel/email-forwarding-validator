@@ -1,5 +1,5 @@
 #!/bin/bash
 
-invoker=$(../src/invoker)
+# first argument is the python invoker
 
-nohup $invoker -u receive.py >> ../output.txt
+nohup $1 -u receive.py >> ../output.txt

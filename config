@@ -12,9 +12,9 @@ else
 
     cd src
     if [[ $1 == "clear" ]]; then
-        echo Need to implement clear
+        $invoker config.py --clear
     elif [[ $# -gt 0 ]]; then
-        echo Need to implement invoker
+        $1 config.py --python_invoker $1
     else
         $invoker config.py --noauth_local_webserver
     fi

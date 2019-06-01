@@ -6,11 +6,11 @@ r2=$(pgrep -f receive.py)
 # repo_path variable added here by config script
 {repo_path_cmd}
 
-dir=$(pwd)
+cd $repo_path
 
 invoker=$(src/invoker)
 
-cd $dir/src
+cd $repo_path/src
 if [ -z $r1 ] || [ -z $r2 ]; then
     if [ -z $r1 ]; then
         $invoker -u timedate.py "1" >> ../output.txt
@@ -22,8 +22,8 @@ if [ -z $r1 ] || [ -z $r2 ]; then
 
     $invoker -u timedate.py "3" >> ../output.txt
     ../kill
-    ../send/start &
-    ../receive/start &
+    ../send/start $invoker &
+    ../receive/start $invoker &
 else
     $invoker -u timedate.py "4" >> ../output.txt
 fi
