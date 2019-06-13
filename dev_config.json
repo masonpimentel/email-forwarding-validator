@@ -1,7 +1,7 @@
 {
     "message_body": {
         "info": "Run got {0} emails, {1} expected",
-        "test": "Test message"
+        "test": "Test message {0}"
     },
     "paths": {
         "repo_path": "/home/snxfz-app/email-forwarding-validator"

@@ -8,11 +8,10 @@ import json
 
 def main():
     service = get_service('../send/token.json')
-    message = create_message()
 
     for i in range(0, config_get_num_cycle()):
         print_message("Sending message " + str(i + 1), "SEND", "verbose")
-        send_message(service, message, "SEND")
+        send_message(service, create_message(), "SEND")
         time.sleep(config_get_email_cycle_delay())
 
     print_message("Waiting half a cycle to synchronize with receive offset", "SEND", "verbose")

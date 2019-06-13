@@ -4,6 +4,7 @@ from httplib2 import Http
 from oauth2client import file, client, tools
 from email.message import EmailMessage
 import base64
+import time
 
 from lib.debugging import *
 from lib.utils import *
@@ -24,6 +25,11 @@ def format_info_message_body(expected_count, actual_count):
     return s
 
 
+def format_test_message_body():
+    epoch = str(int(time.time()))
+    return config_get_message_bodies()["test"].replace("{0}", epoch)
+
+
 def create_message(info=False, expected_count=None, actual_count=None):
     msg = EmailMessage()
     if info:
@@ -33,7 +39,7 @@ def create_message(info=False, expected_count=None, actual_count=None):
     else:
         msg['To'] = config_get_receiver_email()
         msg['Subject'] = config_get_subjects()["test"]
-        msg.set_content(config_get_message_bodies()["test"])
+        msg.set_content(format_test_message_body())
     msg['From'] = config_get_sender_gmail()
 
     return {'raw': base64.urlsafe_b64encode(msg.as_string().encode()).decode()}
