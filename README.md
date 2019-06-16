@@ -143,6 +143,8 @@ _Adding the Gmail `send` scope_|
 
 ### Set up Python Application
 
+This section describes how to set up your environment to run the Python application, including pulling the code, installing necessary tools and depencencies, getting your API token and configuring the app. 
+
 #### Clone repository
 
 Make sure you're in the directory where you want to run the Python application and Cronjob from. The rest of these steps will denote the current directory by `<path>`
@@ -194,6 +196,15 @@ Check that `pip3` is set up correctly:
 $ pip3 -V
 pip 9.0.1 from /usr/lib/python3/dist-packages (python 3.6)
 ```
+
+##### jq
+
+Run the following (on Ubuntu at least) to install `jq`:
+
+```
+$ sudo apt install jq
+```
+
 
 ##### Google API client dependencies
 
@@ -274,6 +285,8 @@ _Verbosity settings_ |
 The rest of the values should generally be left alone unless you really want to modify the behavior of the app.
 
 ### Using the App
+
+This section describes how to manually execute the app (the last section explains how to set it up to run automatically) and view the execution logs.
 
 #### Running for the First Time
 
