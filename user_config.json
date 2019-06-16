@@ -1,6 +1,6 @@
 {
     "backup_size": 192,
-    "email_cycle_delay": 900,
+    "email_cycle_delay": 180,
     "num_cycle": 8,
     "receiver": {
         "info": "fill_this_in",
