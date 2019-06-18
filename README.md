@@ -241,48 +241,30 @@ Repeat the steps with the second link to set up your `receive account` API token
 
 #### Complete configuration JSON
 
-When you open `<path>/email-validator/config.json` you will see the following:
+When you open `<path>/email-validator/user_config.json` you will see the following:
 
 ![](documentation/screenshots/screen16.png) |
 ------------ | 
-_The full `config.json` file_|
+_The full `user_config.json` file_|
 
 ##### Required fields
 
-The following values have to be filled in:
+The fields populated with `fill_this_in` are required.
 
-![](documentation/screenshots/screen13.png) |
------------- | 
-_Mandatory fields to be filled in_ |
-
-* `sender_gmail` - this is the `send account` - the Gmail account that will send the test emails
-* `receiver.test` - IMPORTANT: this is _not_ the `receive account` - this is the email address you are testing, i.e. the account that has forwarding set up, and routes emails eventually to the `receive account`
 * `receiver.info` - this can be any email address at which you'd like to receive automation failure reports - emails will only be sent to this if a run fails
+* `receiver.test` - IMPORTANT: this is _not_ the `receive account` - this is the email address you are testing, i.e. the account that has forwarding set up, and routes emails eventually to the `receive account`
+* `sender_gmail` - this is the `send account` - the Gmail account that will send the test emails
 
 ##### Optional/adjustable fields
 
-These values can be tweaked:
+The remaining configurable fields are optional.
 
-![](documentation/screenshots/screen14.png) |
------------- | 
-_Configurable settings_ |
-
-* `email_cycle_delay` - the delay in seconds between emails that are sent from the `send account` 
-* `num_cycle` - the number of emails that are sent by the `send account` and looked for in the `receive account`
 * `backup_size` - the number of emails that are left in the `receive account` after a run - by increasing this you will have more history to look back at in case there are some emails lost by the forwarding service
-
-##### Verbosity settings
-
-These values change how much information is shown in the logs:
-
-![](documentation/screenshots/screen15.png) |
------------- | 
-_Verbosity settings_ |
-
-* `verbosity.verbose` - setting this to `true` will show more information while the application is running
-* `verbosity.debug` - this is used more for development purposes
-
-The rest of the values should generally be left alone unless you really want to modify the behavior of the app.
+    * Default is `192`
+* `email_cycle_delay` - the delay in seconds between emails that are sent from the `send account` 
+    * Default is `180` - note that it has been observed that higher values may result in the Python application running out of memory and the program getting killed before completing
+* `num_cycle` - the number of emails that are sent by the `send account` and looked for in the `receive account`
+    * Default is `8`
 
 ### Using the App
 
