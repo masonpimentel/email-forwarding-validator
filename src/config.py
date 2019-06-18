@@ -17,12 +17,16 @@ def setup_invoker(invoker):
     dev_config = config_get_dev()
     dev_config["python_invoker"] = invoker
     print_message("Setting Python invoker to " + invoker, "CONFIG", "info")
-    config_write_dev(dev_config)
+    with open("../dev_config.json", "w") as config_file:
+        json.dump(dev_config, config_file, indent=4, sort_keys=True)
 
 
 def clear_configuration():
     config_clear_user_config()
     config_clear_cronjob_repo_path()
+    config_clear_receive_credentials()
+    config_clear_send_credentials()
+    config_delete_tokens()
     print_message("Configuration has been cleared!", "CONFIG", "info")
 
 

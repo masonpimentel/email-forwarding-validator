@@ -1,4 +1,5 @@
 import json
+import os
 
 
 def config_get_dev():
@@ -59,16 +60,6 @@ def config_get_verbosities():
     return config_get_dev()["verbosity"]
 
 
-def config_write_dev(new_config):
-    with open("../dev_config.json", "w") as config_file:
-        json.dump(new_config, config_file, indent=4, sort_keys=True)
-
-
-def config_write_user(new_config):
-    with open("../user_config.json", "w") as config_file:
-        json.dump(new_config, config_file, indent=4, sort_keys=True)
-
-
 def config_replace_cronjob_line(find_string, replace_string_with, contains=False):
     f = open("../cronjob", "r")
     lines = f.readlines()
@@ -91,8 +82,28 @@ def config_clear_user_config():
     user_config["receiver"]["test"] = "fill_this_in"
     user_config["receiver"]["info"] = "fill_this_in"
     user_config["sender_gmail"] = "fill_this_in"
-    config_write_user(user_config)
+    with open("../user_config.json", "w") as config_file:
+        json.dump(user_config, config_file, indent=4, sort_keys=True)
+
+
+def config_clear_receive_credentials():
+    new_config = {}
+    new_config["@note"] = "add receive credentials here"
+    with open("../receive/credentials-receive.json", "w") as config_file:
+        json.dump(new_config, config_file, indent=4, sort_keys=True)
+
+
+def config_clear_send_credentials():
+    new_config = {}
+    new_config["@note"] = "add send credentials here"
+    with open("../send/credentials-send.json", "w") as config_file:
+        json.dump(new_config, config_file, indent=4, sort_keys=True)
 
 
 def config_clear_cronjob_repo_path():
     config_replace_cronjob_line("repo_path=", "{repo_path_cmd}", True)
+
+
+def config_delete_tokens():
+    os.remove("../receive/token.json")
+    os.remove("../send/token.json")
