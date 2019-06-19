@@ -2,4 +2,4 @@
 
 # first argument is the python invoker
 
-nohup $1 -u receive.py >> ../output.txt
+nohup $1 -u receive.py >> ../output.txt 2>&1
