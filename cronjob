@@ -13,17 +13,17 @@ invoker=$(src/invoker)
 cd $repo_path/src
 if [ -z $r1 ] || [ -z $r2 ]; then
     if [ -z $r1 ]; then
-        $invoker -u timedate.py "1" >> ../output.txt
+        $invoker -u timedate.py "send.py not running" >> ../output.txt
     fi
 
     if [ -z $r2 ]; then
-        $invoker -u timedate.py "2" >> ../output.txt
+        $invoker -u timedate.py "receive.py not running" >> ../output.txt
     fi
 
-    $invoker -u timedate.py "3" >> ../output.txt
+    $invoker -u timedate.py "Re-running send and receive" >> ../output.txt
     ../kill
     ../send/start $invoker &
     ../receive/start $invoker &
 else
-    $invoker -u timedate.py "4" >> ../output.txt
+    $invoker -u timedate.py "Still running" >> ../output.txt
 fi
