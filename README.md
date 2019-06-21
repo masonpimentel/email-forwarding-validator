@@ -328,7 +328,7 @@ $ crontab -e
 This should open the file in your preferred editor. On a fresh Ubuntu instance it will let you choose which editor you want to use - if you're not sure, enter "2". You want to enter the following at the end of the file, replacing `<path>` according to the actual path where you cloned the repository:
 
 ```
-*/10 * * * * <path>/email-validator/cronjob
+0 */8 * * * <path>/email-validator/cronjob
 ```
 
 If you're not sure what's happening at this point, you're in the [vim](https://coderwall.com/p/adv71w/basic-vim-commands-for-getting-started) editor. Just press "j" until your cursor reaches the bottom, "o" to start editing, then copy+paste the above if your shell terminal allows it, otherwise enter it in manually. Then press ESC to exit editor mode, ":" (colon), "wq" then ENTER to save and exit. 
@@ -337,7 +337,9 @@ If you're not sure what's happening at this point, you're in the [vim](https://c
 ------------ | 
 _Editing the crontab_ |
 
-This will run the script every 10 minutes. The cronjob checks that the Python script for sending and script for receiving are running - if either are not they will both be restarted. See [cronjob](cronjob).
+This will run the script at 8AM, 4PM and 12AM daily, as denoted by the `0` in the minutes column, the `*/8` for hours divisible by 8, and asterisks for the remaining columns. See [cronjob](cronjob).
+
+
 #### Hint for development
 
 To debug the output of the cronjob, you can use the following, which will pipe stdout and stderr to a text file:
