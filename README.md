@@ -338,3 +338,10 @@ If you're not sure what's happening at this point, you're in the [vim](https://c
 _Editing the crontab_ |
 
 This will run the script every 10 minutes. The cronjob checks that the Python script for sending and script for receiving are running - if either are not they will both be restarted. See [cronjob](cronjob).
+#### Hint for development
+
+To debug the output of the cronjob, you can use the following, which will pipe stdout and stderr to a text file:
+
+```
+<minute> <hour> * * * <path>/email-validator/cronjob >> <path>/email-validator/cronLog.txt 2>&1
+```
