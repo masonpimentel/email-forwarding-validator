@@ -52,3 +52,5 @@ def send_message(service, message, type_prefix):
         return message
     except errors.HttpError as e:
         print_message("An error occurred: {error}".format(error=e), type_prefix, "error")
+        print_message("Please check the email addresses entered in user_config.json", type_prefix, "error")
+        raise e
