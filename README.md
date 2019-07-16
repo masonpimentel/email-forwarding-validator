@@ -21,8 +21,8 @@ This README is more of a guide and includes instructions on everything from sett
 It consists of the following parts:
 
 - Using the Google cloud platform to set up 2 services:
-  - One that handles the sending of emails at a given interval from the `receive account`
-  - Another one that handles checking that all the sent emails are received at `send account`
+  - One that handles the sending of emails at a given interval from the `send account`
+  - Another one that handles checking that all the sent emails are received at `receive account`
 - Setting up the Python application that implements the logic required to utilize the above services
 - Setting up the cronjobs that can be run on a Unix-based server to execute the Python application at a given interval
 
@@ -30,8 +30,8 @@ Note that this guide assumes you are using a Unix cron scheduler but theoretical
 
 What you will need:
 - A machine with a scheduler that can run Python - ideally with 24/7 availability
-- Access to a Gmail account for sending emails - for brevity we will call this the `receive account` from now on
-- Access to the Gmail account you are testing (and which your email forwarding service forwards your emails to) - again for brevity we will call this the `send account`
+- Access to a Gmail account for sending emails - for brevity we will call this the `send account` from now on
+- Access to the Gmail account you are testing (and which your email forwarding service forwards your emails to) - again for brevity we will call this the `receive account`
 
 In total there can be 4 email accounts involved:
 - The Gmail `receive account`
@@ -93,7 +93,7 @@ _Adding the Gmail API_ |
 
 Click on Enable -> Credentials -> + Create Credential
 
-From here, you'll eventually need to create an OAuth client ID, but the UI allows you to enter information to determine that this is the kind of key you'll need. You can fill in the following information:
+From here, you'll eventually need to create an OAuth client ID, but the UI allows you to enter information to determine that this is the kind of key you'll need. (Update July 15, 2019: this may have been removed). You can fill in the following information:
 
 ![](documentation/screenshots/screen7.png) |
 ------------ | 
@@ -103,7 +103,7 @@ Note that although we are specifying "Other UI" the Python application itself do
 
 Now create a client ID - again it helps to use a name along the lines of `ReceiveClient`
 
-In the consent screen, it'll help to mention the receive account for when you're authenticating
+In the consent screen, it'll help to mention the `receive account` for when you're authenticating. If the credentials setup UI changes, essentially this will be application name on the consent screen. Something like `Receive account: use your-receive-account-email@gmail.com`.
 
 ![](documentation/screenshots/screen8.png) |
 ------------ | 
