@@ -93,7 +93,9 @@ _Adding the Gmail API_ |
 
 Click on Enable -> Credentials -> + Create Credential
 
-From here, you'll eventually need to create an OAuth client ID, but the UI allows you to enter information to determine that this is the kind of key you'll need. (Update July 15, 2019: this may have been removed). You can fill in the following information:
+From here, you'll eventually need to create an OAuth client ID, but the UI allows you to enter information to determine that this is the kind of key you'll need. 
+
+Update July 16, 2019: you'll need to select "Help me choose" in the create credentials dropdown for the wizard to appear. 
 
 ![](documentation/screenshots/screen7.png) |
 ------------ | 
@@ -238,6 +240,15 @@ _Authenticating the app in a browser_ |
 Copy the code and enter it in your command line window. This will set up your send account API token.
 
 Repeat the steps with the second link to set up your `receive account` API token.
+
+##### Clear configuration
+
+If for any reason you need to clear your configuration, you can run the following:
+
+```
+$ cd <path>/email-validator
+$ ./config clear
+```
 
 #### Complete configuration JSON
 
