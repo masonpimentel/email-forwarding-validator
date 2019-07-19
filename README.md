@@ -145,7 +145,7 @@ _Adding the Gmail `send` scope_|
 
 ### Set up Python Application
 
-This section describes how to set up your environment to run the Python application, including pulling the code, installing necessary tools and depencencies, getting your API token and configuring the app. 
+This section describes how to set up your environment to run the Python application, including pulling the code, installing necessary tools and dependencies, getting your API token and configuring the app. 
 
 #### Clone repository
 
@@ -218,7 +218,7 @@ $ pip3 install --upgrade google-api-python-client oauth2client
 
 #### Add credentials
 
-After the Create Google Cloud Projects section you will have two JSONs with the credentials for your Google projects. Go ahead and copy and paste the contents into `<path>/email-validator/receive/credentials-receive.json` and `<path>/email-validtor/send/credentials-send.json` (replace the existing contents)
+After the Create Google Cloud Projects section you will have two JSONs with the credentials for your Google projects. Go ahead and copy and paste the contents into `<path>/email-validator/receive/credentials-receive.json` and `<path>/email-validator/send/credentials-send.json` (replace the existing contents)
 
 #### Configure token
 
