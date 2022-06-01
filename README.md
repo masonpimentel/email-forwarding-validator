@@ -2,13 +2,13 @@
 
 This application will allow you to validate the reliability of your email forwarding service to a Google Gmail account by automating the sending, receiving and validation of emails from a Python application. The Google Cloud Gmail API is used to send emails and read them on the Gmail accounts.
 
-![](documentation/email-validator.png) |
+![](documentation/email-validator2.png) |
 ------------ | 
 _High level design_ | 
 
 It works by starting two processes: `send` and `receive` that run concurrently:
 
-![](documentation/processes.png) |
+![](documentation/processes2.png) |
 ------------ | 
 _`send` and `receive` processes: values in bold are configurable_ |
 
